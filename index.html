@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
+    <title>User Admin Page</title>
+    <script>
+
+        function testthis(){
+            alert('Fetching Account Details');
+        }
+        function toggle(id){
+            var subName = document.getElementById(id)
+            if (subName.textContent.trim() === 'true') {
+                subName.textContent = 'false';
+            } else {
+                subName.textContent = 'true'
+            }
+        }
+        function nolinkyet(page){
+            alert(page + ' coming soon');
+        }
+        function fakeInactive(id){
+            // console.log('Fake Inactive Account ID: ' , id);
+            var statusText = document.getElementById(id);
+            console.log(statusText);
+            if (statusText.textContent.trim() === 'Active'){
+                statusText.textContent = 'Inactive';
+            } else {
+                statusText.textContent = 'Active  ';
+            }
+        }
+
+
+        async function getUsers() {
+                await fetch('users.json')
+                    .then((response => response.json()))
+                    .then(data => {
+                        console.log(data);
+                        console.log(data.users.length);
+                        var html = "<table class='styled-table'><tr><th>Name</th><th>Email Address</th></tr>"
+                            for (let i=0; i < data.users.length; i ++){
+                                html += "<tr class='user-row' id='"+ data.users[i].id +"' onclick='getUser("+data.users[i].id+");'>" 
+                                html += "<td>" + data.users[i].first_name + " " + data.users[i].last_name + "</td>";
+                                html += "<td>" + data.users[i].email + "<td>" 
+                                html += "<td width='80px' id='"+ data.users[i].email +"'>" + data.users[i].acct_status + "<td><tr>";
+                            }
+                            html += "</table>"
+                            document.getElementById('left-panel').innerHTML = html;
+                    })
+            }
+        getUsers();
+        async function getUser(id){
+            markActive(id);
+            // alert('Fetching user data for user number: ' + id);
+            await fetch('users.json')
+                .then((response => response.json()))
+                .then(data => {
+                    var html = "<table class='styled-table user-data'>"
+                        html += "<tr>" 
+                            html += "<th>Address</th>"
+                            html += "<th colspan='5'>Subscriptions</th>"
+                            // html += "<th width='20%'>Toggle Status</th>" 
+                        html += "</tr>"
+                        html += "<tr><th></th><th>Car</th><th>Home</th><th>Email</th><th>Services</th></tr>"
+                        html += "<tr id='sub-data'>"
+                        html += "<td id='address' width='350px'>" + data.users[id].address + "</td>";
+                            html += "<td id='car'>" + data.users[id].layouts.home.car + "</td>";
+                            html += "<td id='home'>" + data.users[id].layouts.home.home + "</td>"
+                            html += "<td id='email'>" + data.users[id].layouts.home.email + "</td>";
+                            html += "<td id='services'>" + data.users[id].layouts.home.services + "</td>";
+                        html += "<tr>";
+                        html += "<tr>"
+                            html += "<td></td>";
+                            html += "<td><button value='car' onclick='toggle(this.value)'>Toggle</button></td>"
+                            html += "<td><button value='home' onclick='toggle(this.value)'>Toggle</button></td>"
+                            html += "<td><button value='email' onclick='toggle(this.value)'>Toggle</button></td>"
+                            html += "<td><button value='services' onclick='toggle(this.value)'>Toggle</button></td>"
+                            html += "<td></td>";
+                        html += "<tr>";
+                        html += "<td colspan='6'><button value='" + data.users[id].email + "' onclick='fakeInactive(this.value)'>Deactivate Account</button></td>";
+                    html += "</table>"
+                    document.getElementById('right-panel').innerHTML = html;
+                })
+        }
+        function deselectAllRows() {
+                var rows = document.querySelectorAll('.user-row'); 
+                rows.forEach(function (row) {
+                    if (row.classList.contains('active')) {
+                        row.classList.remove('active'); 
+                    }
+                });
+            }
+        function markActive(id){
+            deselectAllRows();
+            var selected = document.getElementById(id)
+            selected.classList.add('active');
+        }
+    </script>
+</head>
+
+<body id="parchment">
+    <div class="header-holder">
+        <h3>Ministry of Users</h3>
+        <a href="login.html"><button type="button"><i class='icon-logout'></i> Log Out</button></a>
+    </div>
+   
+    <div class="body">
+    <div class="main-container">
+        <div class="sidebar-nav item">
+            <table class='styled-table'>
+                <tr class="active"><td><i class='icon-user'></i> Users</td></tr>
+                <tr onclick="nolinkyet('Groups')"><td><i class='icon-people'></i> Groups</td></tr>    
+                <tr onclick="nolinkyet('Reports')"><td><i class='icon-notebook'></i> Reports</td></tr>    
+                <tr onclick="nolinkyet('Other Stuff')"><td><i class='icon-mustache'></i> Other</td></tr>
+            </table>
+        </div>
+        <div class="left-panel item" id="left-panel">
+            
+        </div>
+        <div class="right-panel item" id="right-panel">
+        </div>
+    </div>
+</div>
+    <footer id="footer" class="footer">
+       
+    </footer>
+</body>
+</html>
+<style>
+.main-container {
+    min-width: 99%;
+    /* display: grid; */
+    display: flex;
+    align-content: stretch;
+    gap: 5px;
+    
+}
+
+</style>

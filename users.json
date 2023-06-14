@@ -1,0 +1,118 @@
+{
+    "users": [
+        {
+            "id": 0,
+            "username": "LoonyTunes77",
+            "first_name": "Luna",
+            "last_name": "Lovegood",
+            "email": "loveisgood@hogwarts.alumni.edu",
+            "address": "181 SCHOONER BEND AVE, SUMMERVILLE",
+            "acct_status": "Active  ",
+            "layouts": 
+                {
+                    "home": 
+                    {
+                        "car"       : true,
+                        "home"      : true,
+                        "email"     : false,
+                        "services"  : true
+                    }
+                }      
+        },
+        {
+            "id": 1,
+            "username": "minnie",
+            "first_name": "Minerva",
+            "last_name": "McGonagall",
+            "email": "mandm@hogwarts.alumni.edu",
+            "address": "1102 BELVEDERE DR, HANAHAN",
+            "acct_status": "Active  ",
+            "layouts": 
+                {
+                    "home": 
+                    {
+                        "car"       : false,
+                        "home"      : true,
+                        "email"     : false,
+                        "services"  : false
+                    }
+                }
+        },
+        {
+            "id": 2,
+            "username": "fatherBrown",
+            "first_name": "Arthur",
+            "last_name": "Weasley",
+            "email": "arty@hogwarts.alumni.edu",
+            "address": "106 BROGUN LOCH TRAIL, GOOSE CREEK",
+            "acct_status": "Active  ",
+            "layouts": 
+                {
+                    "home": 
+                    {
+                        "car"       : true,
+                        "home"      : true,
+                        "email"     : false,
+                        "services"  : true
+                    }
+                }
+        },
+        {
+            "id": 3,
+            "username": "RonyW",
+            "first_name": "Ronald",
+            "last_name": "Weesley",
+            "email": "theBoyWhoLoved@hogwarts.alumni.edu",
+            "address": "267 HASTINGS DR, GOOSE CREEK",
+            "acct_status": "Active  ",
+            "layouts": 
+                {
+                    "home": 
+                    {
+                        "car"       : true,
+                        "home"      : true,
+                        "email"     : true,
+                        "services"  : false
+                    }
+                }
+        },
+        {
+            "id": 4,
+            "username": "Serverous",
+            "first_name": "lil",
+            "last_name": "Snape",
+            "email": "severus@hogwarts.alumni.edu",
+            "address": "1 WATER ST, CHARLESTON",
+            "acct_status": "Active  ",
+            "layouts": 
+                {
+                    "home": 
+                    {
+                        "car"       : false,
+                        "home"      : true,
+                        "email"     : false,
+                        "services"  : true
+                    }
+                }
+        },
+        {
+            "id": 5,
+            "username": "ChosenBoy",
+            "first_name": "Harry",
+            "last_name": "Potter",
+            "email": "halfbloodprince@hogwarts.alumni.edu",
+            "address": "504 FERN TREE DR, SUMMERVILLE",
+            "acct_status": "Active  ",
+            "layouts": 
+                {
+                    "home": 
+                    {
+                        "car"       : true,
+                        "home"      : false,
+                        "email"     : false,
+                        "services"  : false
+                    }
+                }
+        }
+    ]
+}
